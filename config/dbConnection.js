@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 
-module.exports = () => {
+const connMySql = () => {
   return mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -8,4 +8,8 @@ module.exports = () => {
     database: 'portal_noticias',
     insecureAuth: true
   })
+}
+
+module.exports = () => {
+  return connMySql
 }

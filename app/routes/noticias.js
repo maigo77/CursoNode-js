@@ -1,7 +1,7 @@
-const connection = require('../../config/dbConnection')()
-
 module.exports = (app) => {
   app.get('/noticias', (req, res) => {
+
+    const connection = app.config.dbConnection()
 
     connection.query('select * from noticias', (error, result) => {
       if(error){
