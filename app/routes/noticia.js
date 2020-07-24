@@ -2,8 +2,9 @@ module.exports = (app) => {
   app.get('/noticia', (req, res) => {
 
     const connection = app.config.dbConnection()
-
-    connection.query('select * from noticias where id_noticia = 2', (error, result) => {
+    const noticiaModel = new app.app.models.NoticiasDAO(connection)
+    
+    noticiaModel.getNoticia((error, result) => {
       if(error){
         console.log('error: ', error)
       }
