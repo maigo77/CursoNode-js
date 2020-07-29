@@ -1,15 +1,9 @@
-module.exports = (app) => {
-  app.get('/noticias', (req, res) => {
+module.exports = (application) => {
+  application.get('/noticias', (req, res) => {
+    application.app.controllers.noticias.noticias(application, req, res)
+  })
 
-    const connection = app.config.dbConnection()
-    const noticiasModel = new app.app.models.NoticiasDAO(connection)
-
-    noticiasModel.getNoticias((error, result) => {
-      if(error){
-        console.log('error: ', error)
-      }
-      res.render("noticias/noticias", {noticias: result})
-    })
-
+  application.get('/noticia', (req, res) => {
+    application.app.controllers.noticias.noticia(application, req, res)
   })
 }
